@@ -1,0 +1,5 @@
+TODO:
+tasks get ordered according to priority level
+parsing the inputs more (date formula, )
+input shall not be left empty if so, user gets prompted again
+the executable saves/logs the data in a file for reference
