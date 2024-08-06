@@ -1,5 +1,9 @@
 #include "to_do_list.h"
 
+/**
+ * this function iterates through the list while printing the content
+ * stops when the node points to null
+*/
 void	print_list(t_list *root)
 {
 	int i;
@@ -13,6 +17,9 @@ void	print_list(t_list *root)
 	}
 }
 
+/**
+ * the following function creates a node using the content given to it as parameter
+*/
 t_list	*create_node(char *content)
 {
 	t_list	*newnode;
@@ -20,11 +27,15 @@ t_list	*create_node(char *content)
 	newnode = (t_list *)malloc(sizeof(t_list));
 	if (!(newnode))
 		return (NULL);
-	newnode->content = strdup(content);
+	newnode->content = strdup(content); //strdup is used to malloc for the content in order to keep the data of it
 	newnode->next = NULL;
 	return (newnode);
 }
 
+/**
+ * this function find the last node in the linked list given
+ * by iterating in the linked list until the node points to NULL
+*/
 t_list	*find_last_node(t_list *lst)
 {
 	if (!lst)
@@ -36,11 +47,16 @@ t_list	*find_last_node(t_list *lst)
 	return (lst);
 }
 
+/*
+ * this function adds a node at the end of the linked list
+ * with the help of (find_last_node) function
+ * then adds the (new) node after the founded last node
+*/
 void	add_node_at_the_end(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if ((lst == NULL) || (new == NULL))
+	if ((lst == NULL) || (new == NULL)) //protection if one of the parameters are null
 		return ;
 	if (*lst == NULL)
 	{
@@ -51,6 +67,11 @@ void	add_node_at_the_end(t_list **lst, t_list *new)
 	last->next = new;
 }
 
+/**
+ * this function gets all the information about the new task
+ * uses (creat node) to put this information in a node
+ * uses add_node_at_the_end to put the created node at the end of the linked list
+*/
 t_list	*Add_Task(t_list	**current_to_do_list)
 {
 	char	title[20];
@@ -59,6 +80,7 @@ t_list	*Add_Task(t_list	**current_to_do_list)
 	char	Priority[7];
 	char	Category[15];
 
+	// the following printfs requesting the user to add information about the task created
 	printf("\e[95m					Add Task					\n\e[0m");
 	printf("\e[95mEnter a Title : \e[0m");
 	scanf("%s", title);
@@ -76,7 +98,8 @@ t_list	*Add_Task(t_list	**current_to_do_list)
 	scanf("%s", Category);
 
 	printf("\n------------------\n\e[95mYour Current TO_DO_LIST is :\n\e[0m");
+	//adding the task at the end of the linked list
 	add_node_at_the_end(current_to_do_list, create_node(title));
-	print_list(*current_to_do_list);
+	print_list(*current_to_do_list); //printing the ready list
 	return(*current_to_do_list);
 }

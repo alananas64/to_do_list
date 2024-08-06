@@ -1,6 +1,10 @@
+DO NOT ADD THE IDEA FILE FOR SUBMISSION
+
 TODO:
 when No option is selected while having a list prompt if the user wants to exit
 tasks get ordered according to priority level
 parsing the inputs more (date formula, )
 input shall not be left empty if so, user gets prompted again
 the executable saves/logs the data in a file for reference
+we should free after getting done with everything
+update the struct with all the info related to tasks (description, priority, etc)

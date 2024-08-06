@@ -1,5 +1,11 @@
 #include "to_do_list.h"
 
+/**
+ *	the int main prompt a question for the user if he wants to add a new task or not or exit :
+ *	if yes: the program asks for details about the task (name, Description, ...etc)
+ *	if No : check if the list is empty it warns the user
+ *	if exit: it exit the program
+*/
 int main()
 {
 	char	Bool[5];
@@ -30,7 +36,7 @@ int main()
 			return(0);
 		else if ((Bool[0] == 'y') || (Bool[0] == 'Y'))
 			Add_Task(&current_to_do_list);
-		else
+		else //protection in case the user gave unaccepted input
 			printf("\e[90mNotice! Please Pick From The Options (Yes, NO, Exit)\e[0m\n");
 	}
 	return (0);
